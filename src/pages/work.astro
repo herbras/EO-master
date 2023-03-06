@@ -8,7 +8,11 @@ import ContactCTA from "../components/ContactCTA.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
-
+const Insta = import.meta.env.PUBLIC_API;
+const Token = import.meta.env.SECRET_PASSWORD;
+const { data } = await fetch(Insta + Token).then(response => response.json());
+const mapped = Object.keys(data).map(key => data[key]);
+const satuTiga = mapped.slice(0,5);
 
 const projects = (await getCollection("work")).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
@@ -43,66 +47,34 @@ const projects = (await getCollection("work")).sort(
         </div>
       </div>
       <h2>Recent Project</h2>
-      <div class="p-5 bg-gray-400">
-        <div class="grid grid-cols-3 gap-4 grid-flow-row grid-">
-          <div class="p-5 text-center bg-white">
-            <div
-              class="flex lg:flex-col flex-row rounded overflow-hidden h-auto lg:h-72 border shadow shadow-lg"
-            >
-              <img
-                class="block bg-cover"
-                src="https://pbs.twimg.com/media/DrM0nIdU0AEhG5b.jpg"
-              />
-              <div
-                class="bg-white rounded-b w-full lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
-              >
-                <div class="text-black font-bold text-xl mb-2 leading-tight">
-                  Can life make you a bitter developer?
-                </div>
-                <p class="text-grey-darker text-base">Read more</p>
-              </div>
-            </div>
-          </div>
+      <div
+    class="flex scrollWidth overflow-x-scroll overflow-none snap-mandatory scroll-smooth"
+  >
+    {
+      satuTiga.map(({ media_url, caption }) => (
+        <div x-intersect="$el.classList.add('roll-in-blurred-left')" class="flex flex-wrap align-center -mx-4 ">
+          <div class="w-full m-12 p-4 ">
+            <div class="frame w-64 hover:animate-bounce">
+              <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
 
-          <div class="p-5 text-center bg-white">
-            <div
-              class="flex lg:flex-col flex-row rounded overflow-hidden h-auto lg:h-72 border shadow shadow-lg"
-            >
-              <img
-                class="block bg-cover"
-                src="https://pbs.twimg.com/media/DrM0nIdU0AEhG5b.jpg"
-              />
-              <div
-                class="bg-white rounded-b w-full lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
-              >
-                <div class="text-black font-bold text-xl mb-2 leading-tight">
-                  Can life make you a bitter developer?
-                </div>
-                <p class="text-grey-darker text-base">Read more</p>
-              </div>
-            </div>
-          </div>
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
 
-          <div class="p-5 text-center bg-white">
-            <div
-              class="flex lg:flex-col flex-row rounded overflow-hidden h-auto lg:h-72 border shadow shadow-lg"
-            >
-              <img
-                class="block bg-cover"
-                src="https://pbs.twimg.com/media/DrM0nIdU0AEhG5b.jpg"
-              />
-              <div
-                class="bg-white rounded-b w-full lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
-              >
-                <div class="text-black font-bold text-xl mb-2 leading-tight">
-                  Can life make you a bitter developer?
-                </div>
-                <p class="text-grey-darker text-base">Read more</p>
-              </div>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500" />
+              </span>
+              <img src={media_url} class="rounded w-64 xx " />
+            
             </div>
+			<div class="card-body mt-12 text-center text-2xl">
+                <p>How to park your car at your garage?</p>
+                
+              </div>
           </div>
         </div>
-      </div>
+      ))
+    }
+  </div>
       <h2>Event Management & Event Consultation - Projects</h2>
       <div class="flex-col lg:flex-row">
         <div class="flex md:flex-row flex-col">
