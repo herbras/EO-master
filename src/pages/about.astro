@@ -1,0 +1,114 @@
+---
+export const prerender = true;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Picture from '../components/Pitcure.astro';
+---
+
+<BaseLayout title="About |  Murunah Kreatif Indonesia " description="Tentang Murunah Kreatif Indonesia ">
+	<div class="stack gap-20 mt-28">
+		<main class="wrapper about">
+			<Hero
+				title="Murunah Kreatif Indonesia"
+				tagline=" One-stop solution to help MSMEs grow "
+			>
+			
+					<img
+					alt="Murunah Kreatif Banner"
+					width="480"
+					height="620"
+					src="/assets/banner.webp"
+					class="mx-auto rounded-sm shadow-lg  bg-gray-400 object-cover w-full"
+				/>
+			</Hero>
+
+
+
+			<section>
+				<h2 class="section-title"> Gambaran Umum </h2>
+				<div class="content font-medium">
+					<p><span class="font-semibold">Murunah Indonesia</span> pada dasarnya adalah organizer yang bergerak dalam bidang penyelenggaraan event, dan penyediaan jasa digitalisasi marketing untuk membantu teman - teman umkm dalam kegiatan memasarkan atau memperkenalkan produk, baik event dalam skala kecil maupun besar. Kami melayani kerjasama dgn pelayanan yang dititik beratkan tentunya berfokus pada sisi kualitas dan kuantitas.</p>
+
+  Murunah Indonesia dimulai dari inspirasi kami, manusia yang sangat biasa, seorang anak muda pada umumnya yang ingin belajar dan memberikan kebermanfaatan sesama dalam kebaikan, khususnya untuk memajukan umkm Indonesia, dengan kesejahteraan perekonomiannya. Murunah Indonesia sendiri, berdiri sejak 2020, dan kami sahkan nama kami dengan bersama "Murunah Kreatif Indonesia" pada 2021 dengan melihat peluang usaha yang ada dan terbuka lebar, dan dapat memberikan kebermanfaatan dan kerjasama yang baik khususnya bagi teman - teman umkm di jakarta, bahkan seluruh Indonesia.</div>
+			</section>
+			<section>
+				<h2 class="section-title"> Kantor Pusat </h2>
+				<div class="content">
+					<h3>Hive Five
+					</h3>
+					18 Office Park Jl. TB Simatupang No.18, RW.1, Kebagusan, Kec. Ps. Minggu, Jakarta Selatan, DKI Jakarta 12520, ID 
+					
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">  Tahun Berdiri  </h2>
+				<div class="content">
+					2020</div></section>
+			
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	li,p{
+		margin:0 0 10px 0; 
+	}
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-300);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>

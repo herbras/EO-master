@@ -1,0 +1,126 @@
+---
+import Icon, { Props as IconProps } from "./Icon.astro";
+
+const currentYear = new Date().getFullYear();
+import LottieAnimation from "astro-integration-lottie/Lottie.astro";
+
+const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
+{
+    label: "Map",
+    href: "https://www.google.com/maps/dir//Hive+Five+18+Office+Park+Jl.+TB+Simatupang+No.18,+RW.1,+Kebagusan,+Kec.+Ps.+Minggu,+Jakarta+Selatan,+DKI+Jakarta+12520,+ID/@-6.2993288,106.7966507,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x2e69ed991e24018b:0xdc09de605e236810!2m2!1d106.8317561!2d-6.2994153",
+    icon: "map",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/murunah.id/",
+    icon: "insta",
+  },
+  {
+    label: "Linkedin",
+    href: "https://www.linkedin.com/in/sarbeh/",
+    icon: "linkedin",
+  },
+];
+---
+
+<footer>
+	<div class="flex-col">
+		<div class="socials">
+			{
+				iconLinks.map(({ href, icon, label }) => (
+				  <a href={href} class="social">
+					<span class="sr-only">{label}</span>
+					<Icon icon={icon} />
+				  </a>
+				))
+			  }
+		</div>
+		<div class="grid text-center mt-5 md:text-left">
+			<div class="text-sm ">
+				<ol class="text-sm">
+					<li class="mb-2 font-semibold">
+						<a class=" hover:text-gray-700  transition duration-150 ease-in-out" href="https://api.whatsapp.com/send/?phone=6285647059545&text=Assalamualaikum,+saya+ingin+konsultasi+khitan"
+							>085647059545</a
+						>
+					</li>
+					<li class="mb-2 font-semibold">
+						<a class=" hover:text-gray-700  transition duration-150 ease-in-out" href="https://api.whatsapp.com/send/?phone=6285647059545&text=Assalamualaikum,+saya+ingin+konsultasi+khitan"
+							>Murunahindonesia@gmail.com</a
+						>
+					</li>
+					<li class="mb-2 font-semibold">
+						<a class=" hover:text-gray-700  transition duration-150 ease-in-out" href="https://www.google.com/maps/dir//RUMAH+SUNAT+AL+FAZZA/@-7.467637,111.1884339,9z/data=!4m8!4m7!1m0!1m5!1m1!1s0x2dd7e75869315091:0x98c8d0ee95917364!2m2!1d112.729504!2d-7.4961234"
+							>PT. MURUNAH KREATIF INDONESIA, 18 Office Park, TB. Simatupang, Jakarta Selatan</a
+						>
+					</li>
+					
+				</ol>
+			</div>
+		</div>
+	</div>
+	
+	<div class="group items-end lg:text-lg">
+		
+		<p>&copy; {currentYear} PT. MURUNAH KREATIF INDONESIA</p>
+	</div>
+	
+</footer>
+
+<style>
+	footer {
+		--icon-size: var(--text-xl);
+
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		margin-top: auto;
+		padding: 3rem 2rem 3rem;
+		color: var(--gray-100);
+		font-size: var(--text-sm);
+	}
+
+	footer a {
+		color: var(--gray-100);
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	footer a:hover,
+	footer a:focus {
+		text-decoration-color: currentColor;
+	}
+
+	.group {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.socials {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+		font-size: var(--icon-size);
+	}
+
+	@media (min-width: 50em) {
+		footer {
+			flex-direction: row;
+			justify-content: space-between;
+			padding: 2.5rem 5rem;
+		}
+
+		.group {
+			flex-direction: row;
+			gap: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.socials {
+			justify-content: flex-start;
+		}
+	}
+</style>

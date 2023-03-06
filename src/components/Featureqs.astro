@@ -1,0 +1,45 @@
+---
+const Insta = import.meta.env.PUBLIC_API;
+const Token = import.meta.env.SECRET_PASSWORD;
+const { data } = await fetch(Insta + Token).then(response => response.json());
+const mapped = Object.keys(data).map(key => data[key]);
+const satuTiga = mapped.slice(0,3);
+const satuTig = mapped.slice(0,3);
+---
+
+<section class="relative" >
+	<div class="absolute inset-0 bg-primary-50 pointer-events-none mb-32" aria-hidden="true"></div>
+	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
+			<div class="mb-8 text-center">
+				<p class="text-base text-primary-600 font-semibold tracking-wide uppercase">RUMAH SUNAT KAMI MEMILIKI</p>
+				<h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+					Bermacam Keunggulan dan Fasilitas				</h2>
+				<p class="max-w-3xl mx-auto text-center text-xl text-gray-600">
+					Yang paling dicari dan disukai warga <span class="font-bold">Surabaya, Sidoarjo Sekitarnya.</span>				</p>
+			</div>
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12">
+				{
+					satuTiga.map(({ media_url}) => (
+						
+                <img src={media_url} class="rounded w-64 hover:scale-150 ease-in duration-500">
+
+                 ))
+                  
+               
+             
+				}{
+					satuTig.map(({ media_url}) => (
+						
+                <img src={media_url} class="rounded w-64">
+
+                 
+                  ))
+               
+             
+				}
+			</div>
+		</div>
+	</div>
+</section>
+

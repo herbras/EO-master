@@ -1,0 +1,97 @@
+---
+
+---
+
+<div  class="flex-col mt-20 lg:flex-row background">
+    <div class="flex md:flex-row flex-col">
+      <div class=" flex w-full text-center place-content-center ">
+          <h2 x-intersect="$el.classList.add('pompas')" class="">WE 
+          <span class="inline-flex items-baseline">
+            <img src="/assets/icon.webp" class="w-12 h-12 ania rounded-full mx-auto self-center">
+          </span> GIVE LIFE TO YOUR EVENTs</h2>
+      </div>
+     
+      
+  
+      
+    </div>
+    <div class="p-5 text-center ">
+
+      <p  x-intersect="$el.classList.add('pompas')" class=""><b> Murunah Indonesia</b> bergerak dalam bidang penyelenggaraan event, dan penyediaan jasa digitalisasi marketing untuk membantu teman - teman umkm dalam kegiatan memasarkan atau memperkenalkan produk, baik event dalam skala kecil maupun besar. 
+        Kami melayani kerjasama dgn pelayanan yang dititik beratkan tentunya berfokus pada sisi kualitas dan kuantitas.</p>
+    </div>
+  </div>
+
+  <style>
+    .background {
+		border: 1px solid var(--gray-800);
+		border-radius: 0.75rem;
+		padding: 1.5rem;
+		background-color: var(--gray-999_40);
+		box-shadow: var(--shadow-sm);
+	}
+  p{
+    font-size: var(--text-xl);
+	color: var(--gray-100);
+  }
+  b{
+    color: var(--gray-100);
+    text-shadow: 0 0 2px var(--gray-100);
+  }
+
+
+
+
+
+@keyframes pompas {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.pompas{
+  animation: pompas 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0.68s both;
+}
+.pompas{
+  animation: pompas 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) 1s both;
+}
+
+ 
+    @keyframes myAnim {
+	0%,
+	100% {
+		transform: translateX(0%);
+		transform-origin: 50% 50%;
+	}
+
+	15% {
+		transform: translateX(-10px) rotate(-6deg);
+	}
+
+	30% {
+		transform: translateX(8px) rotate(6deg);
+	}
+
+	45% {
+		transform: translateX(-4px) rotate(-3.6deg);
+	}
+
+	60% {
+		transform: translateX(6px) rotate(2.4deg);
+	}
+
+	75% {
+		transform: translateX(-4px) rotate(-2.2deg);
+	}
+
+  } .ania{
+      animation: myAnim 6s ease 0s infinite normal forwards;
+
+  }
+  </style>

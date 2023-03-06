@@ -1,0 +1,37 @@
+import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config();
+import express from "express";
+import fetch from "node-fetch";
+
+export const app = express();
+const PUBLIC_API = process.env.PUBLIC_API;
+const SECRET_PASSWORD = process.env.SECRET_PASSWORD;
+const req = undefined;
+
+
+export const serveRandomImage = app.use("/api/random-image", async (req, res) => {
+  try {
+    const randomNum = Math.floor(Math.random() * 4) + 1;
+    const numFile = `/assets/err-${randomNum}.webp`;
+    res.json({ url: numFile });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+export const insta = app.use("/api/insta",  async (req, res) => {
+  try {
+  
+    const data = await fetch(`${PUBLIC_API}${SECRET_PASSWORD}`);
+const jsw = await data.json();
+const [firstKey, firstValue] = Object.entries(jsw)[0];
+
+const mapped = [firstValue]
+res.json({ insta: mapped});
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
